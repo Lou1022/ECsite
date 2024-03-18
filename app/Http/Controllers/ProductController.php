@@ -9,6 +9,9 @@ class ProductController extends Controller
 {
     public function index(Product $product)//useでインポートしたProductクラスを引数にして、インスタンス化してる
     {
-        return $product->get();//戻り値は変数の中身
+        //view(表示させたいblade.phpファイル)
+        //with([blade内で使う変数名 => 値])
+        //今回の例だとproductモデルクラスで定義されてる変数で、getでproductテーブルの中身。
+        return view('manager.index')->with(['products' => $product->getPaginateByLimit()]);
     }
 }
