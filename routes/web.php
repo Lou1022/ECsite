@@ -17,3 +17,4 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [ProductController::class, 'index']);
 
 Route::get('/manager', [ProductController::class, 'index']);
+Route::get('/manager/{product}', [ProductController::class, 'show']);

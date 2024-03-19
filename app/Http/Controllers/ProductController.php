@@ -14,4 +14,9 @@ class ProductController extends Controller
         //今回の例だとproductモデルクラスで定義されてる変数で、getでproductテーブルの中身。
         return view('manager.index')->with(['products' => $product->getPaginateByLimit()]);
     }
+    
+    public function show(Product $product)
+    {
+        return view('manager.show')->with(['product'=>$product]);
+    }
 }
