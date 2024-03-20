@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', [ProductController::class, 'index']);
-
 Route::get('/manager', [ProductController::class, 'index']);
+Route::get('/manager/create', [CategoryController::class, 'create']);
 Route::get('/manager/{product}', [ProductController::class, 'show']);
+
+Route::post('/products', [ProductController::class, 'store']);
