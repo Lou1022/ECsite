@@ -48,9 +48,9 @@
                         <div class="p-2">在庫数 {{ $product->amount }}</div>
                     </div>
                     <p class="card-text">{{ $product->description }}</p>
-                    <div class="col d-flex flex-row-reverse column-gap-1">
+                    <div class="col d-flex flex-row-reverse column-gap-2">
                         <a href="#" class="btn btn-outline-danger">削除</a>
-                        <a href="#" class="btn btn-outline-primary">編集</a>
+                        <a href="/manager/{{ $product->id }}/edit" class="btn btn-outline-primary">編集</a>
                     </div>
                 </div>
             </div>
