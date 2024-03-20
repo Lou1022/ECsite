@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white disabled" href="#">新規登録</a>
+                        <a class="nav-link col text-white" href="#">新規登録</a>
                     </li>
                     <li class="nav-item text-center mx-5">
                         <a class="nav-link col text-white disabled" href="#">未定</a>
@@ -41,48 +41,49 @@
             <div class="card shadow d-flex my-5" style="width: 50%; height: auto;">
                 <div class="card-header bg-dark text-white">商品の新規登録</div>
                     <div class="card-body text-dark">
-                    <form action="/manager" method="POST" class="row gap-3">
+                    <form action="/manager/{{ $product->id }}" method="POST" class="row gap-3">
                         @csrf
+                        @method('PUT')
                         <div class="col-md-6">
                             <label for="categoryName" class="form-label">カテゴリー</label>
                             <select class="form-select" id="categoryName" name="product[category_id]">
                                 <option selected disabled>1つ選んでください</option>
                                 @foreach ($category as $ctg)
-                                <option value="{{ $ctg['id'] }}">{{ $ctg['name'] }}</option>
+                                <option value="{{ $ctg['id'] }}" {{ $product->category_id == $ctg->id ? 'selected' : '' }}>{{ $ctg['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <p class="text-danger">{{ $errors->first('product.category_id') }}</p>
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">商品名</label>
-                            <input type="text" name="product[name]" class="form-control" id="inputName" value="{{ old('product.name') }}">
+                            <input type="text" name="product[name]" class="form-control" id="inputName" value="{{ $product->name }}">
                         </div>
                         <p class="text-danger">{{ $errors->first('product.name') }}</p>
                         <div class="col-md-12">                                
                             <label for="explainarea" class="form-label">商品説明</label>
-                            <textarea name="product[description]" class="form-control" id="explainarea" rows="7">{{ old('product.description') }}</textarea>
+                            <textarea name="product[description]" class="form-control" id="explainarea" rows="7">{{ $product->description }}</textarea>
                         </div>
                         <p class="text-danger">{{ $errors->first('product.description') }}</p>
                         <div class="col-md-6">
                             <label for="inputPrice" class="form-label">金額</label>
                             <div class="input-group">
-                                <input type="price" name="product[price]" class="form-control" id="inputPrice" value="{{ old('product.price') }}">
+                                <input type="price" name="product[price]" class="form-control" id="inputPrice" value="{{ $product->price }}">
                                 <span class="input-group-text">円</span>
                             </div>
                         </div>
                         <p class="text-danger">{{ $errors->first('product.price') }}</p>
                         <div class="col-md-4">
                             <label for="inputAmount" class="form-label">個数</label>
-                            <input type="number" name="product[amount]" class="form-control" id="inputAmount" value="{{ old('product.amount') }}">
+                            <input type="number" name="product[amount]" class="form-control" id="inputAmount" value="{{ $product->amount }}">
                         </div>
                         <p class="text-danger">{{ $errors->first('product.amount') }}</p>
                         <div class="col-md-12">
                             <label for="formFile" class="form-label">商品画像</label>
-                            <input class="form-control" name="product[main_image]" type="file" id="formFile" value="{{ old('product.main_image') }}">
+                            <input class="form-control" name="product[main_image]" type="file" id="formFile" value="{{ $product->main_image }}">
                         </div>
                         <p class="text-danger">{{ $errors->first('product.main_image') }}</p>
-                        <div class="d-flex flex-row-reverse">
-                            <button type="submit" class="btn btn-outline-primary col-md-2 ml-1" value="store">登録</button>
+                        <div class="d-flex flex-row-reverse column-gap-2">
+                            <button type="submit" class="btn btn-outline-primary col-md-2 ml-1" value="update">保存</button>
                         </div>
                     </form>
                     </div>

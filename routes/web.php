@@ -19,5 +19,9 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/manager', [ProductController::class, 'index']);
 Route::get('/manager/create', [CategoryController::class, 'create']);
 Route::get('/manager/{product}', [ProductController::class, 'show']);
+Route::get('/manager/{product}/edit', [ProductController::class, 'edit']);
 
-Route::post('/products', [ProductController::class, 'store']);
+Route::post('/manager', [ProductController::class, 'store']);
+
+Route::put('/manager/{product}', [ProductController::class, 'update']);
+
