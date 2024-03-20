@@ -19,14 +19,13 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                            <li><a class="dropdown-item" href="/manager">全てのカテゴリー</a></li>
                            <li><hr class="dropdown-divider"></li>
-                           <!--foreachでカテゴリー-->
-                           <li><a class="dropdown-item" href="#">ゲーム</a></li>
-                           <li><a class="dropdown-item" href="#">家具</a></li>
-                           <li><a class="dropdown-item" href="#">食品</a></li>
+                           @foreach ($category as $ctgry)
+                                <li><a class="dropdown-item" href="#">{{ $ctgry['name'] }}</a></li>
+                           @endforeach
                         </ul>
                     </li>
                     <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white" href="#">新規登録</a>
+                        <a class="nav-link col text-white" href="/manager/create">新規登録</a>
                     </li>
                     <li class="nav-item text-center mx-5">
                         <a class="nav-link col text-white disabled" href="#">未定</a>
@@ -38,8 +37,8 @@
             </div>
         </header>
         <div class="d-flex flex-column align-items-center">
-            <div class="card shadow d-flex my-5" style="width: 80%; height: auto;">
-                <div class="card-header bg-dark text-white">カテゴリー</div>
+            <div class="card shadow d-flex my-5" style="width: 50%; height: auto;">
+                <div class="card-header bg-dark text-white">{{ $product->category->name }}</div>
                 <div class="card-body text-dark">
                     <div class="d-flex">
                         <h5 class="card-title p-2">{{ $product->name }}</h5>
