@@ -30,9 +30,6 @@
                     <li class="nav-item text-center mx-5">
                         <a class="nav-link col text-white disabled" href="#">未定</a>
                     </li>
-                    <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white disabled" href="#">未定</a>
-                    </li>
                 </ul>
             </div>
         </header>
@@ -49,15 +46,31 @@
                     </div>
                     <p class="card-text">{{ $product->description }}</p>
                     <div class="col d-flex flex-row-reverse column-gap-2">
-                        <a href="#" class="btn btn-outline-danger">削除</a>
+                        <form action="/manager/{{ $product->id }}" id="form_{{ $product->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger" onclick='return deleteProduct()'>削除</button>
+                            </form>
                         <a href="/manager/{{ $product->id }}/edit" class="btn btn-outline-primary">編集</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="d-flex flex-row-reverse" style="margin-right: 10%">
-            <button type="button" class="btn btn-dark" onclick="history.back()">戻る</button>
+            <a type="button" class="btn btn-dark" href="/manager">戻る</a>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function deleteProduct() {
+                var res = confirm('一度削除すると復元できません。\n本当に削除しますか？');
+                if (res == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>

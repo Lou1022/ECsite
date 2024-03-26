@@ -30,9 +30,6 @@
                     <li class="nav-item text-center mx-5">
                         <a class="nav-link col text-white disabled" href="#">未定</a>
                     </li>
-                    <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white disabled" href="#">未定</a>
-                    </li>
                 </ul>
             </div>
         </header>
@@ -50,7 +47,6 @@
                         </div>
                         <p class="card-text">{{ Str::limit($product['description'], 40) }}<a href="/manager/{{ $product->id }}">詳細</a></p>
                         <div class="col d-flex flex-row-reverse column-gap-2">
-                            <a href="#" class="btn btn-outline-danger">削除</a>
                             <a href="/manager/{{ $product->id }}/edit" class="btn btn-outline-primary">編集</a>
                         </div>
                     </div>

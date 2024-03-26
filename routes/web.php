@@ -25,3 +25,4 @@ Route::post('/manager', [ProductController::class, 'store']);
 
 Route::put('/manager/{product}', [ProductController::class, 'update']);
 
+Route::delete('/manager/{product}',[ProductController::class, 'delete']);

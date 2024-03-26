@@ -52,4 +52,10 @@ class ProductController extends Controller
         $product->fill($input_product)->save();
         return redirect('/manager/' . $product->id);
     }
+    
+    public function delete(Product $product)
+    {
+        $product->delete();
+        return redirect('/');
+    }
 }
