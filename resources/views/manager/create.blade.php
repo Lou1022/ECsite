@@ -19,17 +19,13 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                            <li><a class="dropdown-item" href="/manager">全てのカテゴリー</a></li>
                            <li><hr class="dropdown-divider"></li>
-                           <!--foreachでカテゴリー-->
-                           <li><a class="dropdown-item" href="#">ゲーム</a></li>
-                           <li><a class="dropdown-item" href="#">家具</a></li>
-                           <li><a class="dropdown-item" href="#">食品</a></li>
+                           @foreach ($category as $ctgry)
+                                <li><a class="dropdown-item" href="#">{{ $ctgry['name'] }}</a></li>
+                           @endforeach
                         </ul>
                     </li>
                     <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white disabled" href="#">新規登録</a>
-                    </li>
-                    <li class="nav-item text-center mx-5">
-                        <a class="nav-link col text-white disabled" href="#">未定</a>
+                        <a class="nav-link col text-white disabled" href="/manager/create">新規登録</a>
                     </li>
                     <li class="nav-item text-center mx-5">
                         <a class="nav-link col text-white disabled" href="#">未定</a>
